@@ -7,7 +7,7 @@ Bu proje, **20x50** boyutundaki dinamik bir ızgara (grid) üzerinde başlangı�
 - **20x50 Etkileşimli Izgara:** Kullanıcı fare ile başlangıç/hedef noktalarını belirleyebilir, engel (duvar) örebilir veya `W` tuşu ile maliyetli zorlu arazi (çamur) ekleyebilir.
 - **Hibrit Yol Bulma Modu (`H` Tuşu):** Haritada maliyetli arazi bulunmadığında hızlı **BFS** algoritmasını, zorlu arazi veya dinamik maliyet değişimi algılandığında ise maliyet duyarlı **A*** algoritmasını otomatik olarak devreye sokar.
 - **Algoritma Karşılaştırması (Bonus):** Hem **BFS** hem de **A*** algoritmalarının hedefe ulaşırken taradığı toplam kare sayısını hesaplar ve pencere başlığında karşılaştırmalı olarak gösterir.
-
+- **Görsel Ajan (Robot) Simülasyonu:**- **Görsel Ajan (Robot) Simülasyonu:**rü çizilen rota üzerinde adım adım animasyonla hedefe kadar ilerler.
 ## Kurulum ve Çalıştırma
 1. Gerekli kütüphaneyi yükleyin:
 ```bash
