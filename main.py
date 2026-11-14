@@ -114,16 +114,37 @@ def draw(pencere, izgara):
 
 def yolu_ciz(ciz_fonksiyonu, gelinen_yer, baslangic, hedef):
     temp = hedef
-    uzunluk = 0
+    yol_listesi = []
+    
+    # Önce sarı yolu çiz
     while temp in gelinen_yer:
+        yol_listesi.append(temp)
         temp = gelinen_yer[temp]
-        uzunluk += 1
         if temp != baslangic:
             temp.renk = SARI
         ciz_fonksiyonu()
         pygame.time.delay(15)
     hedef.renk = MOR
-    return uzunluk
+
+    # Şimdi robotu (ajanı) baştan sona yürüt
+    yol_listesi.reverse()
+    for adim in yol_listesi:
+        for olay in pygame.event.get():
+            if olay.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+                
+        ciz_fonksiyonu()
+        # Robot gövdesi (kırmızı daire) ve gözleri
+        merkez_x = adim.x + KARE_BOYUTU // 2
+        merkez_y = adim.y + KARE_BOYUTU // 2
+        pygame.draw.circle(PENCERE, (231, 76, 60), (merkez_x, merkez_y), KARE_BOYUTU // 2 - 2)
+        pygame.draw.circle(PENCERE, BEYAZ, (merkez_x - 3, merkez_y - 2), 2)
+        pygame.draw.circle(PENCERE, BEYAZ, (merkez_x + 3, merkez_y - 2), 2)
+        pygame.display.update()
+        pygame.time.delay(45)
+
+    return len(yol_listesi)
 
 def bfs(ciz_fonksiyonu, izgara, baslangic, hedef):
     kuyruk = deque([baslangic])
